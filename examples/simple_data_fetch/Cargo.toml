@@ -1,0 +1,18 @@
+[package]
+name = "simple_data_fetch"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+boticordrs = {path = "../../"}
+tokio = { version = "1.14", features = ["macros", "rt-multi-thread"] }
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.reqwest]
+version = "0.11.0"
+features = ["json"]
