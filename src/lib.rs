@@ -1,3 +1,36 @@
+//! # boticordrs
+//!
+//! Crate for [Boticord](https://boticord.top/) API
+//! ## Usage
+//!
+//! Add this to your `Cargo.toml`
+//! ```toml
+//! [dependencies]
+//! boticordrs = "0.0.1"
+//! ```
+//!
+//! ## Example
+//!
+//! ```no_run
+//! use boticordrs::{BoticordClient};
+//! use boticordrs::types::{BotStats};
+//!
+//! #[tokio::main]
+//! async fn main() {
+//!     let client = BoticordClient::new("your token".to_string()).expect("failed client");
+//!
+//!     let stats = BotStats {servers: 2514, shards: 3, users: 338250};
+//!
+//!     match client.post_bot_stats(stats).await {
+//!         Ok(_) => {
+//!             println!("Well Done!")
+//!         },
+//!         Err(e) => eprintln!("{}", e),
+//!     }
+//! }
+//! ```
+#![doc(html_root_url = "https://docs.rs/boticordrs/0.0.1")]
+
 use reqwest::header::AUTHORIZATION;
 use reqwest::{Client as ReqwestClient, Response};
 use reqwest::{Method};
@@ -42,13 +75,26 @@ impl BoticordClient {
         get(self, url).await
     }
 
-    /// Get vec of bot's comments.
+    /// Get Vec of bot's comments.
     pub async fn get_bot_comments(&self, bot: String) -> Result<Vec<SingleComment>, BoticordError> {
         let url = api_url!("/bot/{}/comments", bot);
         get(self, url).await
     }
 
+    /// Get Vec of server's comments.
+    pub async fn get_server_comments(&self, server: String) -> Result<Vec<SingleComment>, BoticordError> {
+        let url = api_url!("/server/{}/comments", server);
+        get(self, url).await
+    }
+
     /// Post current bot's stats.
+    /// # How to set BotStats? (example)
+    ///
+    /// ```no_run
+    /// use boticordrs::types::{BotStats};
+    ///
+    /// let stats = BotStats{servers: 2514, shards: 3, users: 338250};
+    /// ```
     pub async fn post_bot_stats(&self, stats: BotStats) -> Result<(), BoticordError> {
         let url = api_url!("/stats",);
         post(self, url, Some(stats)).await
