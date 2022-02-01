@@ -6,15 +6,15 @@ macro_rules! api_url {
     ($e:expr) => {
         concat!("https://api.boticord.top/v1", $e)
     };
-    ($e:expr, $($rest:tt)*) => {
-        format!(api_url!($e), $($rest)*)
+    ($e:expr, $($rest:tt)) => {
+        format!(api_url!($e), $($rest))
     };
 }
 
 pub mod types;
 mod errors;
 
-use types::*;
+use types::;
 pub use errors::BoticordError;
 
 /// You can use it to make it much easier to use the Boticord API.
@@ -25,13 +25,13 @@ pub struct BoticordClient {
 }
 
 impl BoticordClient {
-    /// Constructs a new `Client`.
+    /// Constructs a new Client.
     pub fn new(token: String) -> Result<Self, BoticordError> {
         let client = ReqwestClient::builder().build().map_err(errors::from)?;
         Ok(BoticordClient { client, token })
     }
 
-    /// Constructs a new `Client` with `ReqwestClient` specified by user.
+    /// Constructs a new Client with ReqwestClient specified by user.
     pub fn new_with_client(client: ReqwestClient, token: String) -> Self {
         BoticordClient { client, token }
     }
@@ -40,6 +40,18 @@ impl BoticordClient {
     pub async fn get_bot_info(&self, bot: String) -> Result<Bot, BoticordError> {
         let url = api_url!("/bot/{}", bot);
         get(self, url).await
+    }
+
+    /// Get vec of bot's comments.
+    pub async fn get_bot_comments(&self, bot: String) -> Result<Vec<SingleComment>, BoticordError> {
+        let url = api_url!("/bot/{}/comments", bot);
+        get(self, url).await
+    }
+
+    /// Post current bot's stats.
+    pub async fn post_bot_stats(&self, stats: BotStats) -> Result<(), BoticordError> {
+        let url = api_url!("/stats",);
+        post(self, url, Some(stats)).await
     }
 }
 
@@ -56,7 +68,7 @@ async fn request<T>(
     let mut req = client
         .client
         .request(method, &url)
-        .header(AUTHORIZATION, &*client.token);
+        .header(AUTHORIZATION, &client.token);
 
     if let Some(data) = data {
         req = req.json(&data);
@@ -80,4 +92,13 @@ async fn get<T>(client: &BoticordClient, url: String) -> Result<T, BoticordError
         Ok(data) => Ok(data),
         Err(e) => Err(errors::from(e)),
     }
+}
+
+
+async fn post<T>(client: &BoticordClient, url: String, data: Option<T>) -> Result<(), BoticordError>
+    where
+        T: serde::Serialize + Sized,
+{
+    request(client, Method::POST, url, data).await?;
+    Ok(())
 }

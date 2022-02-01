@@ -1,4 +1,4 @@
-use serde::{Deserialize};
+use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd, Deserialize,)]
 pub struct BotId(pub String);
@@ -7,22 +7,37 @@ pub struct ServerId(pub String);
 #[derive(Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd, Deserialize,)]
 pub struct UserId(pub String);
 
-/// Information about the server that attached to the bot.
+/// This model represents a server (attached to the bot)
 #[derive(Clone, Debug, Deserialize, PartialEq)]
 pub struct BotServer {
     pub id: ServerId,
     pub approved: bool
 }
 
-/// Bot's stats.
-#[derive(Clone, Debug, Deserialize, PartialEq)]
+/// This model represents bot's stats.
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct BotStats {
     pub servers: u64,
     pub shards: u64,
     pub users: u64
 }
 
-/// Bot's stats.
+/// This model represents single comment.
+#[derive(Clone, Debug, Deserialize, PartialEq)]
+pub struct SingleComment {
+    #[serde(rename = "userID")]
+    pub user_id: String,
+    pub text: String,
+    pub vote: u64,
+    #[serde(rename = "isUpdated")]
+    pub is_updated: bool,
+    #[serde(rename = "created_at")]
+    created_at: Option<u64>,
+    #[serde(rename = "updated_at")]
+    updated_at: Option<u64>,
+}
+
+/// This model represents bot's social media links.
 #[derive(Clone, Debug, Deserialize, PartialEq)]
 pub struct BotLinks {
     pub discord: Option<String>,
@@ -30,7 +45,8 @@ pub struct BotLinks {
     pub site: Option<String>
 }
 
-/// Information about the bot.
+
+/// This model represents information about the bot.
 #[derive(Clone, Debug, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct BotInformation {
@@ -51,7 +67,7 @@ pub struct BotInformation {
     pub status: String
 }
 
-/// Model of a bot.
+/// This model represents bot.
 #[derive(Clone, Debug, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Bot {
