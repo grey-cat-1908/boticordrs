@@ -7,8 +7,8 @@ async fn main() {
 
     let stats = BotStats {servers: 2514, shards: 3, users: 338250};
 
-    match client.post_botstats(stats).await {
-        Ok() => {
+    match client.post_bot_stats(stats).await {
+        Ok(_) => {
             println!("Well Done!")
         },
         Err(e) => eprintln!("{}", e),

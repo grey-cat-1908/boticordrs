@@ -6,15 +6,15 @@ macro_rules! api_url {
     ($e:expr) => {
         concat!("https://api.boticord.top/v1", $e)
     };
-    ($e:expr, $($rest:tt)) => {
-        format!(api_url!($e), $($rest))
+    ($e:expr, $($rest:tt)*) => {
+        format!(api_url!($e), $($rest)*)
     };
 }
 
 pub mod types;
 mod errors;
 
-use types::;
+use types::*;
 pub use errors::BoticordError;
 
 /// You can use it to make it much easier to use the Boticord API.
