@@ -13,11 +13,11 @@ There are only some methods to use, but it's all what do we have in Boticord API
 
 If you have any questions you can `Marakarka#0575` on discord.
 
-<h3>_What about Boticord Webhooks?_</h3>
+<h3><em>What about Boticord Webhooks?</em></h3>
 
 In the future we will add some structs to work with. You can use `warp` or something like that to fetch them. (We will add an example)
 
-<h3>_What about AutoLoop?_</h3>
+<h3><em>What about AutoLoop?</e></h3>
 
 We will add an example how to one (with `Serenity`, because `Twilight` users are usually Professionals)
 
@@ -47,6 +47,7 @@ async fn main() {
 <h2>ToDo: </h2>
 
 <h3>Bots: </h3>
+
 * [x] Get Bot's info method
 * [x] Get Bot's comments method
 * [x] Post Bot's stats method
@@ -58,6 +59,7 @@ async fn main() {
 * [x] Post bot's stats example
 
 <h3>Servers: </h3>
+
 * [x] Get Server's info method
 * [x] Get Server's comments method
 * [ ] Post Server's stats method
@@ -68,6 +70,7 @@ async fn main() {
     * [ ] Server's stats
 
 <h3>Users: </h3>
+
 * [ ] Get information about user method
 * [ ] Get user's comment
 * [ ] Get user's bots
@@ -77,6 +80,7 @@ async fn main() {
     * [ ] Single User's bot
 
 <h3>Other: </h3>
+
 * [ ] Add Webhooks-Using example (using `warp`)
 * [ ] Define Structures
     * [x] Single Comment
