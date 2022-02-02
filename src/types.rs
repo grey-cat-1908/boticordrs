@@ -38,6 +38,23 @@ pub struct BotLinks {
     pub site: Option<String>
 }
 
+/// This model represents Server's social medias.
+#[derive(Clone, Debug, Deserialize, PartialEq)]
+pub struct ServerLinks {
+    /// Server's invite.
+    pub invite: Option<String>,
+    /// Server's website.
+    pub site: Option<String>,
+    /// Server's youtube channel.
+    pub youtube: Option<String>,
+    /// Server's twitch channel.
+    pub twitch: Option<String>,
+    /// Server's steam profile.
+    pub steam: Option<String>,
+    /// Server's VK group.
+    pub vk: Option<String>
+}
+
 /// This model represents Information about the bot.
 #[derive(Clone, Debug, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
@@ -60,10 +77,10 @@ pub struct BotInformation {
     pub library: Option<String>,
     /// Bot's short description.
     #[serde(rename = "shortDescription")]
-    pub short_description: String,
+    pub short_description: Option<String>,
     /// Bot's long description.
     #[serde(rename = "longDescription")]
-    pub long_description: String,
+    pub long_description: Option<String>,
     /// Bot's badge.
     pub badge: Option<u64>,
     /// Bot's stats.
@@ -71,6 +88,35 @@ pub struct BotInformation {
     /// Bot's approval status.
     pub status: String
 }
+
+/// This model represents Information about the server.
+#[derive(Clone, Debug, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct ServerInformation {
+    /// Server's name.
+    pub name: String,
+    /// Server's avatar.
+    pub avatar: Option<String>,
+    /// Server's members count
+    pub members: Vec<u64>,
+    /// Server's owner.
+    pub owner: Option<UserId>,
+    /// Bumps count.
+    pub bumps: u64,
+    /// Server's search-tags.
+    pub tags: Vec<String>,
+    /// Server's social media.
+    pub links: ServerLinks,
+    /// Server's short description.
+    #[serde(rename = "shortDescription")]
+    pub short_description: Option<String>,
+    /// Server's long description.
+    #[serde(rename = "longDescription")]
+    pub long_description: Option<String>,
+    /// Server's badge.
+    pub badge: Option<String>,
+}
+
 
 /// Model that represents a bot.
 #[derive(Clone, Debug, Deserialize, PartialEq)]
@@ -81,11 +127,27 @@ pub struct Bot {
     #[serde(rename = "shortCode")]
     /// Bot's page short code.
     pub short_code: Option<String>,
-    pub links: Vec<String>,
+    pub links: Option<Vec<String>>,
     /// Bot's server.
     pub server: Option<BotServer>,
     /// Bot's information.
     pub information: BotInformation
+}
+
+/// Model that represents a server.
+#[derive(Clone, Debug, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct Server {
+    /// Server's Id.
+    pub id: ServerId,
+    #[serde(rename = "shortCode")]
+    /// Server's page short code.
+    pub short_code: Option<String>,
+    pub links: Option<Vec<String>>,
+    /// Server's statis.
+    pub status: String,
+    /// Information about the server.
+    pub information: ServerInformation
 }
 
 /// This model represents single comment.

@@ -8,7 +8,7 @@ async fn main() {
 
     match client.get_bot_info(bot_id).await {
         Ok(res) => {
-            println!("Short Description: {}", res.information.short_description)
+            println!("Short Description: {}", res.information.short_description.unwrap())
         },
         Err(e) => eprintln!("{}", e),
     }

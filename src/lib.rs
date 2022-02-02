@@ -75,6 +75,13 @@ impl BoticordClient {
         get(self, url).await
     }
 
+    /// Get information about a specific server.
+    pub async fn get_server_info(&self, server: String) -> Result<Server, BoticordError> {
+        let url = api_url!("/server/{}", server);
+        get(self, url).await
+    }
+
+
     /// Get Vec of bot's comments.
     pub async fn get_bot_comments(&self, bot: String) -> Result<Vec<SingleComment>, BoticordError> {
         let url = api_url!("/bot/{}/comments", bot);
