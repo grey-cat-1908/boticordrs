@@ -3,11 +3,13 @@ name = "boticordrs"
 description = "Crate for Boticord API"
 readme = "README.md"
 license = "MIT"
+documentation = "https://docs.rs/boticordrs"
+repository = "https://github.com/grey-cat-1908/boticordrs"
 authors = ["Victor Kotlin"]
 keywords = ["discord", "boticord", "bots"]
 categories = ["api-bindings", "web-programming::http-client"]
 include = ["src/**/*", "LICENSE.txt", "README.md"]
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 
 [features]

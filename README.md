@@ -62,12 +62,12 @@ async fn main() {
 
 * [x] Get Server's info method
 * [x] Get Server's comments method
-* [ ] Post Server's stats method
-* [ ] Define Structures
+* [x] Post Server's stats method
+* [x] Define Structures
     * [x] Server
     * [x] Information about the server
     * [x] Server's Links
-    * [ ] Server's stats
+    * [x] Server's stats
 
 <h3>Users: </h3>
 

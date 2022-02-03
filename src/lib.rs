@@ -106,6 +106,13 @@ impl BoticordClient {
         let url = api_url!("/stats",);
         post(self, url, Some(stats)).await
     }
+
+    /// Post Server Stats Method.
+    /// Remember, that only Boticord-Service Bots can do it in global, other will get an 403 error. (but it may works for custom bots, but you need a special API-token)
+    pub async fn post_server_stats(&self, stats: ServerStats) -> Result<(), BoticordError> {
+        let url = api_url!("/server ",);
+        post(self, url, Some(stats)).await
+    }
 }
 
 async fn request<T>(

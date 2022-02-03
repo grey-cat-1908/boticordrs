@@ -27,6 +27,33 @@ pub struct BotStats {
     pub users: u64
 }
 
+/// This model represents Server stats.
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+pub struct ServerStats {
+    /// Server Id
+    #[serde(rename = "serverID")]
+    pub server_id: String,
+    /// Is this bump request? (`1` - yes, `0` - no)
+    pub up: u64,
+    /// Is bot in server members list? (`1` - yes, `0` - no)
+    pub status: u64,
+    /// Server Name
+    #[serde(rename = "serverName")]
+    pub server_name: Option<String>,
+    /// Server Icon
+    #[serde(rename = "serverAvatar")]
+    pub server_avatar: Option<String>,
+    /// Server Members count (total, cached by the bot)
+    #[serde(rename = "serverMembersAllCount")]
+    pub server_members_all_count: Option<u64>,
+    /// Online Server Members count (only currently online members count)
+    #[serde(rename = "serverMembersOnlineCount")]
+    pub server_members_online_count: Option<u64>,
+    /// Server's Owner Id.
+    #[serde(rename = "serverOwnerID")]
+    pub server_owner_id: Option<String>,
+}
+
 /// This model represents Bot's social medias.
 #[derive(Clone, Debug, Deserialize, PartialEq)]
 pub struct BotLinks {
@@ -98,7 +125,7 @@ pub struct ServerInformation {
     /// Server's avatar.
     pub avatar: Option<String>,
     /// Server's members count
-    pub members: Vec<u64>,
+    pub members: Option<Vec<u64>>,
     /// Server's owner.
     pub owner: Option<UserId>,
     /// Bumps count.
@@ -106,7 +133,7 @@ pub struct ServerInformation {
     /// Server's search-tags.
     pub tags: Vec<String>,
     /// Server's social media.
-    pub links: ServerLinks,
+    pub links: Option<ServerLinks>,
     /// Server's short description.
     #[serde(rename = "shortDescription")]
     pub short_description: Option<String>,
@@ -144,7 +171,7 @@ pub struct Server {
     /// Server's page short code.
     pub short_code: Option<String>,
     pub links: Option<Vec<String>>,
-    /// Server's statis.
+    /// Server's status.
     pub status: String,
     /// Information about the server.
     pub information: ServerInformation
