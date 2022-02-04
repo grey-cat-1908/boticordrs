@@ -197,3 +197,38 @@ pub struct SingleComment {
     #[serde(rename = "updated_at")]
     updated_at: Option<u64>,
 }
+
+/// This model represents information about user.
+#[derive(Clone, Debug, Deserialize, PartialEq)]
+pub struct UserInformation {
+    /// Id of user
+    pub id: UserId,
+    /// Custom status
+    pub status: Option<String>,
+    /// User badge
+    pub badge: Option<String>,
+    /// User Page shortcode
+    #[serde(rename = "shortCode")]
+    pub short_code: Option<String>,
+    /// User's Website
+    pub site: Option<String>,
+    /// User's VK page
+    pub vk: Option<String>,
+    /// User's steam profile
+    pub steam: Option<String>,
+    /// User's youtube channel
+    pub youtube: Option<String>,
+    /// User's twitch account
+    pub twitch: Option<String>,
+    /// User's githup profile
+    pub git: Option<String>
+}
+
+/// This model represents user's comments
+#[derive(Clone, Debug, Deserialize, PartialEq)]
+pub struct UserComments {
+    /// Comments on bots pages
+    pub bots: Option<Vec<SingleComment>>,
+    /// Comments on user pages
+    pub servers: Option<Vec<SingleComment>>
+}

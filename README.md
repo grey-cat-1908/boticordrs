@@ -71,12 +71,12 @@ async fn main() {
 
 <h3>Users: </h3>
 
-* [ ] Get information about user method
-* [ ] Get user's comment
+* [x] Get information about user method
+* [x] Get user's comments
 * [ ] Get user's bots
 * [ ] Define Structures
-    * [ ] Information about user
-    * [ ] Single User's comment
+    * [x] Information about user
+    * [x] Single User's comment
     * [ ] Single User's bot
 
 <h3>Other: </h3>
