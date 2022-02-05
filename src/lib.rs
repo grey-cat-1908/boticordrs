@@ -105,6 +105,12 @@ impl BoticordClient {
         get(self, url).await
     }
 
+    /// Get Vec of user's bots.
+    pub async fn get_user_bots(&self, user: String) -> Result<Vec<SingleUserBot>, BoticordError> {
+        let url = api_url!("/bots/{}", user);
+        get(self, url).await
+    }
+
 
     /// Post current bot's stats.
     /// # How to set BotStats? (example)

@@ -198,6 +198,16 @@ pub struct SingleComment {
     updated_at: Option<u64>,
 }
 
+/// This model represents single bot.
+#[derive(Clone, Debug, Deserialize, PartialEq)]
+pub struct SingleUserBot {
+    /// Bot's id.
+    pub id: BotId,
+    /// Bot's page shortcode.
+    #[serde(rename = "shortCode")]
+    pub short_code: Option<String>,
+}
+
 /// This model represents information about user.
 #[derive(Clone, Debug, Deserialize, PartialEq)]
 pub struct UserInformation {
@@ -232,3 +242,13 @@ pub struct UserComments {
     /// Comments on user pages
     pub servers: Option<Vec<SingleComment>>
 }
+
+// /// This model represents webhook response
+// #[derive(Clone, Debug, Deserialize, PartialEq)]
+// pub struct WebhookResponse {
+//     /// Type of response
+//     #[serde(rename = "type")]
+//     pub type_of_data: String,
+//     /// Response Data
+//     pub data:
+// }

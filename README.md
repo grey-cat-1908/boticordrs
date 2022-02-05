@@ -73,11 +73,11 @@ async fn main() {
 
 * [x] Get information about user method
 * [x] Get user's comments
-* [ ] Get user's bots
-* [ ] Define Structures
+* [x] Get user's bots
+* [x] Define Structures
     * [x] Information about user
     * [x] Single User's comment
-    * [ ] Single User's bot
+    * [x] Single User's bot
 
 <h3>Other: </h3>
 
