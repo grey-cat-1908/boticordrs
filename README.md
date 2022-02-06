@@ -1,25 +1,43 @@
-<h1 align="center">BoticordRS</h1>
+<p align="center">
+<img width="520" src="https://media.discordapp.net/attachments/825242846616354821/939773822582808606/boticordrs_banner.png" alt="">
+</p>
 
-<p align="center">Rust crate for <a href="https://boticord.top/">Boticord</a> API</p>
+<p align="center">
+  <b>
+    The easiest way to use Boticord API in rust
+    <span> · </span>
+    <a href="https://docs.rs/boticordrs">Docs</a>
+  </b>
+</p>
 
-<h3 align="center">
-Project is currently in development.
-</h3>
+<p align="center">
+<a href="https://docs.rs/boticordrs"><img src="https://img.shields.io:/docsrs/boticordrs?style=flat-square" alt=""></a>
+<a href="https://crates.io/crates/boticordrs"><img src="https://img.shields.io:/crates/d/boticordrs?style=flat-square" alt=""></a>
+<a href="https://crates.io/crates/boticordrs"><img src="https://img.shields.io:/crates/v/boticordrs?style=flat-square" alt=""></a>
+</p>
+
+
+<h2>Usage</h2>
+
+```toml
+[dependencies]
+boticordrs = "0.1.0"
+```
 
 <h2>Main Information: </h2>
 
-This crate doesn't require using Serenity or Twilight. It makes working with the Boticord API more user-friendly.
+BoticordRS doesn't require using Serenity or Twilight. It makes working with the Boticord API easier.
 There are only some methods to use, but it's all what do we have in Boticord API.
 
-If you have any questions you can `Marakarka#0575` on discord.
+If you have any questions you can `Marakarka#0575` on [discord](https://img.shields.io:/crates/v/boticordrs?style=flat-square).
 
 <h3><em>What about Boticord Webhooks?</em></h3>
 
-In the future we will add some structs to work with. You can use `warp` or something like that to fetch them. (We will add an example)
+Boticord Webhooks are not implemented in Boticordrs.
 
 <h3><em>What about AutoLoop?</e></h3>
 
-We will add an example how to one (with `Serenity`, because `Twilight` users are usually Professionals)
+There is an examples (with serenity). You can find it in the examples folder in our repository.
 
 <h2>Examples: </h2>
 
@@ -43,46 +61,3 @@ async fn main() {
     }
 }
 ```
-
-<h2>ToDo: </h2>
-
-<h3>Bots: </h3>
-
-* [x] Get Bot's info method
-* [x] Get Bot's comments method
-* [x] Post Bot's stats method
-* [x] Define Structures
-  * [x] Bot
-  * [x] Bot's Information
-  * [x] Bot's Links
-  * [x] Bot's attached server
-* [x] Post bot's stats example
-
-<h3>Servers: </h3>
-
-* [x] Get Server's info method
-* [x] Get Server's comments method
-* [x] Post Server's stats method
-* [x] Define Structures
-    * [x] Server
-    * [x] Information about the server
-    * [x] Server's Links
-    * [x] Server's stats
-
-<h3>Users: </h3>
-
-* [x] Get information about user method
-* [x] Get user's comments
-* [x] Get user's bots
-* [x] Define Structures
-    * [x] Information about user
-    * [x] Single User's comment
-    * [x] Single User's bot
-
-<h3>Other: </h3>
-
-* [ ] Add Webhooks-Using example (using `warp`)
-* [ ] Define Structures
-    * [x] Single Comment
-    * [ ] Webhook Message - New Bot Bump
-    * [ ] Webhook Message - Operation with comment

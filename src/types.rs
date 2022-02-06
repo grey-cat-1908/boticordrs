@@ -242,13 +242,3 @@ pub struct UserComments {
     /// Comments on user pages
     pub servers: Option<Vec<SingleComment>>
 }
-
-// /// This model represents webhook response
-// #[derive(Clone, Debug, Deserialize, PartialEq)]
-// pub struct WebhookResponse {
-//     /// Type of response
-//     #[serde(rename = "type")]
-//     pub type_of_data: String,
-//     /// Response Data
-//     pub data:
-// }

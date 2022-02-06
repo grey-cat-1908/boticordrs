@@ -6,7 +6,7 @@
 //! Add this to your `Cargo.toml`
 //! ```toml
 //! [dependencies]
-//! boticordrs = "0.0.1"
+//! boticordrs = "0.1.0"
 //! ```
 //!
 //! ## Example
@@ -29,7 +29,7 @@
 //!     }
 //! }
 //! ```
-#![doc(html_root_url = "https://docs.rs/boticordrs/0.0.1")]
+#![doc(html_root_url = "https://docs.rs/boticordrs/0.1")]
 
 use reqwest::header::AUTHORIZATION;
 use reqwest::{Client as ReqwestClient, Response};

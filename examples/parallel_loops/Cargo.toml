@@ -1,0 +1,12 @@
+[package]
+name = "parallel_loops"
+version = "0.1.0"
+authors = ["my name <my@email.address>"]
+edition = "2018"
+
+[dependencies]
+boticordrs = {path = "../../"}
+serenity = { version="0.10.10", default-features = false, features = ["client", "gateway", "rustls_backend", "model", "cache"] }
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+sys-info = "0.7"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }

@@ -5,4 +5,6 @@ Cargo.lock
 /examples/simple_data_fetch/Cargo.lock
 /examples/simple_post_stats/Cargo.lock
 /examples/simple_post_stats/target/
+/examples/parallel_loops/Cargo.lock
+/examples/parallel_loops/target
 boticordrs.iml
