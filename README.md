@@ -37,7 +37,7 @@ Boticord Webhooks are not implemented in Boticordrs.
 
 <h3><em>What about AutoLoop?</em></h3>
 
-There is an examples (with serenity). You can find it in the examples folder in our repository.
+There is an example (with serenity). You can find it in the examples folder in our repository.
 
 <h2>Examples: </h2>
 
