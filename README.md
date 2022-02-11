@@ -35,7 +35,7 @@ If you have any questions you can `Marakarka#0575` on [discord](https://img.shie
 
 Boticord Webhooks are not implemented in Boticordrs.
 
-<h3><em>What about AutoLoop?</e></h3>
+<h3><em>What about AutoLoop?</em></h3>
 
 There is an examples (with serenity). You can find it in the examples folder in our repository.
 
