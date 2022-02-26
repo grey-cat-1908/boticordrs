@@ -1,6 +1,6 @@
 [package]
 name = "boticordrs"
-description = "Crate for Boticord API"
+description = "Crate for BotiCord API"
 readme = "README.md"
 license = "MIT"
 documentation = "https://docs.rs/boticordrs"
