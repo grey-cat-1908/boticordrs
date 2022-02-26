@@ -4,7 +4,7 @@
 
 <p align="center">
   <b>
-    The easiest way to use Boticord API in rust
+    The easiest way to use BotiCord API in Rust
     <span> · </span>
     <a href="https://docs.rs/boticordrs">Docs</a>
   </b>
@@ -21,19 +21,19 @@
 
 ```toml
 [dependencies]
-boticordrs = "0.1.0"
+boticordrs = "0.1.1"
 ```
 
 <h2>Main Information: </h2>
 
-BoticordRS doesn't require using Serenity or Twilight. It makes working with the Boticord API easier.
-There are only some methods to use, but it's all what do we have in Boticord API.
+boticordrs doesn't require using Serenity or Twilight. It makes working with the BotiCord API easier.
+There are only some methods to use, but it's all what do we have in BotiCord API.
 
-If you have any questions you can `Marakarka#0575` on [discord](https://img.shields.io:/crates/v/boticordrs?style=flat-square).
+If you have any questions you can **[Marakarka#0575](https://boticord.top/profile/585766846268047370)** on [discord](https://img.shields.io:/crates/v/boticordrs?style=flat-square).
 
-<h3><em>What about Boticord Webhooks?</em></h3>
+<h3><em>What about BotiCord Webhooks?</em></h3>
 
-Boticord Webhooks are not implemented in Boticordrs.
+BotiCord Webhooks are not implemented in boticordrs.
 
 <h3><em>What about AutoLoop?</em></h3>
 

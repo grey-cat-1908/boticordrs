@@ -7,4 +7,5 @@ Cargo.lock
 /examples/simple_post_stats/target/
 /examples/parallel_loops/Cargo.lock
 /examples/parallel_loops/target
+/examples/parallel_loops/Makefile.toml
 boticordrs.iml

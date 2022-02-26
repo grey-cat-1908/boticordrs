@@ -109,7 +109,7 @@ pub struct BotInformation {
     #[serde(rename = "longDescription")]
     pub long_description: Option<String>,
     /// Bot's badge.
-    pub badge: Option<u64>,
+    pub badge: Option<String>,
     /// Bot's stats.
     pub stats: BotStats,
     /// Bot's approval status.
