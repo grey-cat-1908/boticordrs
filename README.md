@@ -29,7 +29,7 @@ boticordrs = "0.1.1"
 boticordrs doesn't require using Serenity or Twilight. It makes working with the BotiCord API easier.
 There are only some methods to use, but it's all what do we have in BotiCord API.
 
-If you have any questions you can **[Marakarka#0575](https://boticord.top/profile/585766846268047370)** on [discord](https://img.shields.io:/crates/v/boticordrs?style=flat-square).
+If you have any questions you can ask **[Marakarka#0575](https://boticord.top/profile/585766846268047370)** on [discord](https://img.shields.io:/crates/v/boticordrs?style=flat-square).
 
 <h3><em>What about BotiCord Webhooks?</em></h3>
 
