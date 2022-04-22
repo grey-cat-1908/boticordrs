@@ -1,4 +1,5 @@
 /target
+target
 /.idea
 Cargo.lock
 /examples/simple_data_fetch/target/

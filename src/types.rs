@@ -242,3 +242,58 @@ pub struct UserComments {
     /// Comments on user pages
     pub servers: Option<Vec<SingleComment>>
 }
+
+/// This enum represents supported by link shortener domains
+#[repr(u64)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+pub enum LinkDomain {
+    /// ``bcord.cc`` domain, default
+    BCordCC = 1,
+    /// ``myservers.me`` domain
+    MyServersMe = 2,
+    /// ``discord.camp`` domain
+    DiscordCamp = 3
+}
+
+/// This model represents shorted link
+#[derive(Clone, Debug, Deserialize, PartialEq)]
+pub struct ShortedLink {
+    /// Id of shorted link
+    pub id: u64,
+    /// Code of shorted link
+    pub code: String,
+    /// Id of owner of shorted link
+    #[serde(rename = "ownerID")]
+    pub owner_id: UserId,
+    /// Domain of shorted link
+    pub domain: String,
+    /// Link views count
+    pub views: u64,
+    /// Original Link of shorted link
+    pub link: String,
+    /// Timestamp of link creation moment
+    pub date: u64,
+}
+
+/// This model represents empty body
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+pub struct EmptyBody {
+}
+
+/// This model represents links shortener body parameters.
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+pub struct ShortenerBody {
+    /// Code of shorted link. Could be not passed.
+    ///
+    /// **Required** in ``delete_shorted_link``.
+    /// and ``search_for_shorted_link``
+    pub code: Option<String>,
+    /// Link to short.
+    ///
+    /// **Required** in ``create_shorted_link``.
+    pub link: Option<String>,
+    /// Domain to use / already used in a shorted link.
+    ///
+    /// **Required** in ``create_shorted_link`` and ``delete_shorted_link``.
+    pub domain: Option<LinkDomain>
+}

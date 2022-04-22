@@ -94,21 +94,57 @@ impl BoticordClient {
     }
 
     /// Get Vec of server's comments.
-    pub async fn get_server_comments(&self, server: String) -> Result<Vec<SingleComment>, BoticordError> {
+    pub async fn get_server_comments(&self,
+                                     server: String
+    ) -> Result<Vec<SingleComment>, BoticordError> {
         let url = api_url!("/server/{}/comments", server);
         get(self, url).await
     }
 
     /// Get Vec of user's comments.
-    pub async fn get_user_comments(&self, server: String) -> Result<UserComments, BoticordError> {
+    pub async fn get_user_comments(&self,
+                                   server: String
+    ) -> Result<UserComments, BoticordError> {
         let url = api_url!("/profile/{}/comments", server);
         get(self, url).await
     }
 
     /// Get Vec of user's bots.
-    pub async fn get_user_bots(&self, user: String) -> Result<Vec<SingleUserBot>, BoticordError> {
+    pub async fn get_user_bots(&self,
+                               user: String
+    ) -> Result<Vec<SingleUserBot>, BoticordError> {
         let url = api_url!("/bots/{}", user);
         get(self, url).await
+    }
+
+    /// Get Vec of shorted by current user links
+    pub async fn get_my_shorted_links(&self) -> Result<Vec<ShortedLink>, BoticordError> {
+        let url = api_url!("/links/get",);
+        post_with_response(self, url, Some(EmptyBody{})).await
+    }
+
+    /// Get Vec of shorted by current user links with the provided code
+    pub async fn search_for_shorted_link(&self,
+                                      shortener_body: ShortenerBody
+    ) -> Result<Vec<ShortedLink>, BoticordError> {
+        let url = api_url!("/links/get",);
+        post_with_response(self, url, Some(shortener_body)).await
+    }
+
+    /// Creates new shorted link
+    pub async fn create_shorted_link(&self,
+                                      shortener_body: ShortenerBody
+    ) -> Result<ShortedLink, BoticordError> {
+        let url = api_url!("/links/create",);
+        post_with_response(self, url, Some(shortener_body)).await
+    }
+
+    /// Deletes shorted link
+    pub async fn delete_shorted_link(&self,
+                                     shortener_body: ShortenerBody
+    ) -> Result<(), BoticordError> {
+        let url = api_url!("/links/delete",);
+        post(self, url, Some(shortener_body)).await
     }
 
 
@@ -126,7 +162,9 @@ impl BoticordClient {
     }
 
     /// Post Server Stats Method.
-    /// Remember, that only Boticord-Service Bots can do it in global, other will get an 403 error. (but it may works for custom bots, but you need a special API-token)
+    /// Remember, that only Boticord-Service Bots can do it in global,
+    /// other will get an 403 error.
+    /// (but it may works for custom bots, but you need a special API-token)
     pub async fn post_server_stats(&self, stats: ServerStats) -> Result<(), BoticordError> {
         let url = api_url!("/server ",);
         post(self, url, Some(stats)).await
@@ -173,10 +211,26 @@ async fn get<T>(client: &BoticordClient, url: String) -> Result<T, BoticordError
 }
 
 
-async fn post<T>(client: &BoticordClient, url: String, data: Option<T>) -> Result<(), BoticordError>
+async fn post<T>(client: &BoticordClient,
+                 url: String,
+                 data: Option<T>) -> Result<(), BoticordError>
     where
         T: serde::Serialize + Sized,
 {
     request(client, Method::POST, url, data).await?;
     Ok(())
+}
+
+async fn post_with_response<T, R>(client: &BoticordClient,
+                    url: String,
+                    data: Option<T>) -> Result<R, BoticordError>
+    where
+        T: serde::Serialize + Sized,
+        R: serde::de::DeserializeOwned + Sized,
+{
+    let resp = request(client, Method::POST, url, data).await?;
+    match resp.json().await {
+        Ok(data) => Ok(data),
+        Err(e) => Err(errors::from(e)),
+    }
 }
