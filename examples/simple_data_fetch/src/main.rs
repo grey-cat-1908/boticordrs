@@ -2,7 +2,7 @@ use boticordrs::{BoticordClient};
 
 #[tokio::main]
 async fn main() {
-    let client = BoticordClient::new("".to_string()).expect("failed client");
+    let client = BoticordClient::new("".to_string(), 2).expect("failed client");
 
     let bot_id: String = "724663360934772797".to_string();
 

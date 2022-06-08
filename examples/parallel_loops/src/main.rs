@@ -92,7 +92,7 @@ async fn post_boticord_stats_loop(ctx: Arc<Context>, boticord_client: BoticordCl
 async fn main() {
     let token = "disord bot token";
 
-    let mut client = Client::builder(&token)
+    let mut client = Client::builder(&token, 2)
         .event_handler(Handler {
             is_loop_running: AtomicBool::new(false),
         })
