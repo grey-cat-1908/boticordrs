@@ -61,10 +61,13 @@ pub struct BoticordClient {
 impl BoticordClient {
     /// Constructs a new Client.
     ///
+    /// In BotiCord API v2 there are some changes with token.
+    /// [Read more here](https://docs.boticord.top/topics/v1vsv2/)
+    ///
     /// # Arguments
     ///
     /// * `token` - Your BotiCord token
-    /// * `version` - Version of BotiCord API
+    /// * `version` - Version of BotiCord API.
     ///
     pub fn new(token: String, version: u64) -> Result<Self, BoticordError> {
         let client = ReqwestClient::builder().build().map_err(errors::from)?;
@@ -72,6 +75,9 @@ impl BoticordClient {
     }
 
     /// Constructs a new Client with ReqwestClient specified by user.
+    ///
+    /// In BotiCord API v2 there are some changes with token.
+    /// [Read more here](https://docs.boticord.top/topics/v1vsv2/)
     ///
     /// # Arguments
     ///
