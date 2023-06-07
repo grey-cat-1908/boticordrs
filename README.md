@@ -1,3 +1,5 @@
+<h1> Archived </h1>
+
 <p align="center">
 <img width="520" src="https://media.discordapp.net/attachments/825242846616354821/939773822582808606/boticordrs_banner.png" alt="">
 </p>
@@ -23,6 +25,8 @@
 [dependencies]
 boticordrs = "0.1.3"
 ```
+
+
 
 <h2>Main Information: </h2>
 
